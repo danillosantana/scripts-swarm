@@ -2,6 +2,10 @@ param([string] $PASTA_PROJETO,
         [string] $PASTA_AMBIENTE, [string] $TIPO_AMBIENTE, 
             [int32]$PORT, [string] $PROJETO)
 
+function Start-MVN {
+   mvn package -DskipTests 
+}
+
 $output = "[INFO] --------Configurando "
 $output += $PROJETO
 $output += ' Tipo de Ambiente:'
@@ -39,10 +43,6 @@ Write-Output '[INFO] ----------Gerando Imagem-----------------------------------
 docker image build -t $nomeProjeto .
 docker image prune -f
 
-#################################################################################################################################
-function Start-MVN {
-   mvn package -DskipTests 
-}
 
 
 
